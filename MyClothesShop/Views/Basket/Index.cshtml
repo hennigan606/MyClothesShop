@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewBag.Title = "Basket";
+}
+
+<h2>Basket</h2>
+
+@{ decimal Total = 0.00m;}
+
+@foreach (var product in Model)
+{
+    if (product.SalePrice == 0.00m)
+    {
+        Total += product.Price;
+
+        <div class="container">
+            <div><h2>@product.Name</h2><h3>Price: €@product.Price</h3></div>
+            <div style="width: 555px; padding: 10px; float: left; margin-bottom: 20px; border-bottom: 5px solid black;">
+                <img style="width: 150px; height: 150px; float: left;" src="@Url.Content(product.Image)" />
+                <p style="float: left;"><a class="btn btn-default" href="@Url.Action(
+                                                   "RemoveFromBasket", "Basket", new { ProductID = product.ProductID })"
+                alt="Remove From Basket">Remove From Basket &raquo;</a></p>
+            </div>
+        </div>
+    }
+
+    else
+    {
+        Total += product.SalePrice;
+
+        <div class="container">
+            <div><h2>@product.Name</h2><h3>Price &#40Discount Applied&#41: €@product.SalePrice</h3></div>
+            <div style="width: 555px; padding: 10px; float: left; margin-bottom: 20px; border-bottom: 5px solid black;">
+                <img style="width: 150px; height: 150px; float: left;" src="@Url.Content(product.Image)" />
+                <p style="float: left;"><a class="btn btn-default" href="@Url.Action(
+                                                   "RemoveFromBasket", "Basket", new { ProductID = product.ProductID })"
+                alt="Remove From Basket">Remove From Basket &raquo;</a></p>
+            </div>
+        </div>
+    }
+}
+
+<div style="border: 5px solid blue;">
+    <h2>Total: €@Total <a class="btn btn-default" alt="Checkout" href="@Url.Action("Index", "Checkout")">Checkout &raquo;</a></h2>
+</div>

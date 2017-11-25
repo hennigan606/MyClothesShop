@@ -1,0 +1,48 @@
+﻿@model IPagedList<Product>
+
+@{
+    ViewBag.Title = "Search Results";
+}
+
+<h1>Search Results:</h1>
+
+<div>
+
+    @foreach (var product in Model)
+    {
+        if (product.SalePrice > 0)
+        {
+            <div class="container">
+                <div>
+                    <h2>@product.Name</h2>
+                    <p><h3>RRP: €@product.Price</h3><h3 style="color: red;">Sale Price: €@product.SalePrice</h3></p>
+                </div>
+                <div style="width: 555px; padding: 10px; float: left; margin-bottom: 20px; border-bottom: 5px solid black;">
+                    <img src="@Url.Content(product.Image)" />
+                </div>
+                <div style="width: 555px; padding: 10px; float: left; margin-bottom: 20px; border-bottom: 5px solid black; height: 525px;">
+                    <p>@product.Description</p>
+                    <p><a class="btn btn-default" href="@Url.Action("Index", "Mens")" alt="Mens">Add to Basket &raquo;</a></p>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="container">
+                <div><h2>@product.Name</h2><h3>€@product.Price</h3></div>
+                <div style="width: 555px; padding: 10px; float: left; margin-bottom: 20px; border-bottom: 5px solid black;">
+                    <img src="@Url.Content(product.Image)" />
+                </div>
+                <div style="width: 555px; padding: 10px; float: left; margin-bottom: 20px; border-bottom: 5px solid black; height: 525px;">
+                    <p>@product.Description</p>
+                    <p><a class="btn btn-default" href="@Url.Action("Index", "Mens")" alt="Mens">Add to Basket &raquo;</a></p>
+                </div>
+            </div>
+        }
+    }
+
+    @*<div class="pager">*@
+        @Html.PagedListPager(Model, page => Url.Action("Search", new { searchTerm = ViewBag.searchTerm, page }),
+        PagedListRenderOptions.MinimalWithItemCountText)
+    @*</div>*@
+</div>

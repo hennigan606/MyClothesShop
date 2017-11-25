@@ -1,0 +1,17 @@
+﻿@model IPagedList<Product>
+
+@foreach (var product in Model)
+{
+    <div class="container">
+        <div><h2>@product.Name</h2><h3>€@product.Price</h3></div>
+        <div style="width: 555px; padding: 10px; float: left; margin-bottom: 20px; border-bottom: 5px solid black;">
+            <img src="@Url.Content(product.Image)" />
+        </div>
+        <div style="width: 555px; padding: 10px; float: left; margin-bottom: 20px; border-bottom: 5px solid black; height: 525px;">
+            <p>@product.Description</p>
+            <p><a class="btn btn-default" href="@Url.Action(
+                                               "AddToBasket", "Basket", new { ProductID = product.ProductID })"
+            alt="Add To Basket">Add to Basket &raquo;</a></p>
+        </div>
+    </div>
+}

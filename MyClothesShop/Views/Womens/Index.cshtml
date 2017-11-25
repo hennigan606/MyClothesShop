@@ -1,0 +1,18 @@
+﻿@model IPagedList<Product>
+
+@{
+    ViewBag.Title = "Womens";
+}
+
+<h2>Women's - All</h2>
+
+@Html.Partial("WomensNavBar")
+
+<div>
+    @Html.Partial("Products")
+
+    @*<div class="pager">*@
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+        PagedListRenderOptions.MinimalWithItemCountText)
+    @*</div>*@
+</div>

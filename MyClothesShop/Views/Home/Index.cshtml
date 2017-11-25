@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<div class="jumbotron">
+    <h1>Welcome to My Clothes Shop!</h1>
+    <img src="~/Resources/banner.jpg" style="padding-right: 28px;" />
+    <img src="~/Resources/We are open.jpg" />
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Mens</h2>
+        <p>
+            Got a big interview? Going out with the lads? Staying in, watching a movie with the missus?
+            We've got you covered for every occasion!
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Mens")" alt="Mens">Shop Now &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Womens</h2>
+        <p>
+            Want that designer look without the hefty price tag that goes with it? And we're not talking about last season's
+            look either... Check out all the latest fashion here!
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Womens")" alt="Womens">Shop Now &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Sale</h2>
+        <p>
+            Desperate to upgrade that wardrobe but don't have enough cash to do it all? Check out our Sale section and grab
+            yourself a bargain today!
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Sale")" alt="Sale">Shop Now &raquo;</a></p>
+    </div>
+</div>
